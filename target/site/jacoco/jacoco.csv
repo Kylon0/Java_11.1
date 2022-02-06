@@ -1,6 +1,0 @@
-GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
-statistics,domain,smartphone,10,0,0,0,4,0,3,0,3,0
-statistics,domain,product,9,15,0,0,3,7,3,4,3,4
-statistics,domain,book,3,14,0,0,1,7,1,4,1,4
-statistics,repository,productManager,29,64,9,5,11,15,7,4,1,3
-statistics,repository,productRepository,38,36,4,0,9,10,3,4,1,4
