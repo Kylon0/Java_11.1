@@ -1,13 +1,13 @@
 package repository;
 
-import domain.product;
+import domain.Product;
 
-public class productRepository {
-    private static product[] items = new product[0];
+public class ProductRepository {
+    private static Product[] items = new Product[0];
 
-    public static void save(product item) {
+    public static void save(Product item) {
         int length = items.length + 1;
-        product[] tmp = new product[length];
+        Product[] tmp = new Product[length];
         System.arraycopy(items, 0, tmp, 0, items.length);
         int lastIndex = tmp.length - 1;
         tmp[lastIndex] = item;
@@ -16,9 +16,9 @@ public class productRepository {
 
     public void removeById(int id) {
         int length = items.length - 1;
-        product[] tmp = new product[length];
+        Product[] tmp = new Product[length];
         int index = 0;
-        for (product item : items) {
+        for (Product item : items) {
             if (item.getId() != id) {
                 tmp[index] = item;
                 index++;
@@ -26,7 +26,7 @@ public class productRepository {
         }
         items = tmp;
     }
-    public static product[] findAll() {
+    public static Product[] findAll() {
         return items;
     }
 }
