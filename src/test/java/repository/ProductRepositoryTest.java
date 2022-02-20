@@ -3,41 +3,47 @@ package repository;
 import domain.*;
 import manager.ProductManager;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class ProductRepositoryTest {
+    private ProductRepository repository = new ProductRepository();
+    private ProductManager manager = new ProductManager(repository);
+    private Book first = new Book(2, "Книга", 2000, "Толстой");
+    private Smartphone second = new Smartphone(3, "Phone", 1500, "Apple");
 
-    @Test
-    void search() {
-        ProductRepository repo = new ProductRepository();
-        Book first = new Book();
-        first.setId(1);
-        first.setAuthor("Толстой");
-        first.setName("Книга Война и Мир");
-        first.setPrice(1000);
-        repo.save(first);
-        repo.findAll();
-        ProductManager manager = new ProductManager(repo);
-
-        boolean actual = manager.matches(first,"Толстой");
-        boolean expected = true;
-        assertEquals(expected,actual);
+    @BeforeEach
+    public void setUp() {
+        manager.add(first);
+        manager.add(second);
     }
-    @Test
-    void search2() {
-        ProductRepository repo = new ProductRepository();
-        Book first = new Book();
-        first.setId(1);
-        first.setAuthor("Толстой");
-        first.setName("Книга Война и Мир");
-        first.setPrice(1000);
-        repo.save(first);
-        repo.findAll();
-        ProductManager manager = new ProductManager(repo);
 
-        boolean actual = manager.matches(first,"Достоевский");
-        boolean expected = false;
-        assertEquals(expected,actual);
+    @Test
+    void searchBookByName() {
+        Product[] actual = manager.searchBy("Книга");
+        Product[] expected = new Product[]{first};
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    void searchSmartphoneByName() {
+        Product[] actual = manager.searchBy("Phone");
+        Product[] expected = new Product[]{second};
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    void searchBookByAuthor() {
+        Product[] actual = manager.searchBy("Толстой");
+        Product[] expected = new Product[]{first};
+        assertArrayEquals(expected,actual);
+    }
+
+    @Test
+    void searchSmartphoneByManufacturer() {
+        Product[] actual = manager.searchBy("Apple");
+        Product[] expected = new Product[]{second};
+        assertArrayEquals(expected,actual);
     }
 }

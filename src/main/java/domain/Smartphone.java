@@ -1,17 +1,15 @@
 package domain;
 
 public class Smartphone extends Product {
-
-    private String model;
-
     private String manufacturer;
 
-    public String getModel() {
-        return model;
+    public Smartphone(){
+        super();
     }
 
-    public void setModel(String model) {
-        this.model = model;
+    public Smartphone(int id, String name, int price, String manufacturer) {
+        super(id, name, price);
+        this.manufacturer = manufacturer;
     }
 
     public String getManufacturer() {

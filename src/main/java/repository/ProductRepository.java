@@ -3,9 +3,9 @@ package repository;
 import domain.Product;
 
 public class ProductRepository {
-    private static Product[] items = new Product[0];
+    private Product[] items = new Product[0];
 
-    public static void save(Product item) {
+    public void save(Product item) {
         int length = items.length + 1;
         Product[] tmp = new Product[length];
         System.arraycopy(items, 0, tmp, 0, items.length);
@@ -26,7 +26,8 @@ public class ProductRepository {
         }
         items = tmp;
     }
-    public static Product[] findAll() {
+
+    public Product[] findAll() {
         return items;
     }
 }
